@@ -1,4 +1,4 @@
-import logging, platform, os, argparse, subprocess, shlex
+import logging, platform, os, argparse, subprocess, shlex, getpass
 from itertools import count
 
 class Assessment():
@@ -13,16 +13,18 @@ class Assessment():
     def sys_info(self, dirname):
     
         with open(os.path.join(self.make_dir(dirname, "system_info"), "system_info.txt"), 'w') as f:
-            f.write("""************************************************************************
-            uname: {uname}
-            ************************************************************************
+            f.write("""
+            *************************************
+                    {uname}                     
+            *************************************
             user: {login}
             system: {system}
             hostname: {node} 
             release: {release}
             kernel version: {version}
             processor: {machine}
-            architecture: {architecture}""".format(uname=platform.uname(), login=os.getlogin(), system=platform.system(), node=platform.node(),
+            architecture: {architecture}
+            """.format(uname=platform.uname(), login=getpass.getuser(), system=platform.system(), node=platform.node(),
             release=platform.release(), version=platform.version(), machine=platform.machine(),	architecture=platform.architecture()))
             
         
@@ -37,7 +39,10 @@ class Assessment():
     
 
 
-class Windows(Assessment): #todo: mbsa, support more AVs, fix event logs
+class Windows(Assessment): #todo: mbsa, support more AVs
+
+    def sys_info(self, dirname): #obtain disk info, installed apps, installed hotfixes
+        os.system('psinfo.exe -d -s -h /accepteula >> {}'.format(os.path.join(Assessment.make_dir(self, dirname, "system_info"), 'system_info.txt')))
 
     def get_avlogs(self, dirname):
         #copy mcafee logs
@@ -64,8 +69,9 @@ class Windows(Assessment): #todo: mbsa, support more AVs, fix event logs
         print('[*] Retrieved firewall settings and logs.')
         
     def get_eventlogs(self, dirname): #Save the list of event log files
+        evtdir = Assessment.make_dir(self, dirname, 'event_logs')
         for line in ['Application','System','Security']:
-            with open (os.path.join(Assessment.make_dir(self, dirname, 'event_logs'), '{}.txt'.format(line)), 'wb') as f:
+            with open (os.path.join(evtdir, '{}.txt'.format(line)), 'wb') as f:
                 f.write(subprocess.check_output(shlex.split('psloglist.exe -s -t "\\t" -x /accepteula')))
         logging.info('Event logs saved.')
         print('[*] Retrieved event logs.')
@@ -78,13 +84,47 @@ class Windows(Assessment): #todo: mbsa, support more AVs, fix event logs
             print('[*] Retrieved group policy.')
         except Exception as e:
             logging.info('Group Policy Error: {}'.format(e))
-        
+            
+    def get_netinfo(self, dirname):
+        with open(os.path.join(dirname, "system_info", "ip_configuration.txt"), 'wb') as f:
+            f.write(subprocess.check_output(shlex.split('ipconfig /all')))
+          
+        with open(os.path.join(dirname, 'system_info', 'network_connections.txt'), 'w') as f:
+            f.write("""
+            *************************************
+            +       NETSTAT -anbf               +
+            *************************************
+            {netstat_all}
+            
+            *************************************
+            +       NETSTAT tcp                 +
+            *************************************            
+            {netstat_tcp}
+            
+            *************************************
+            +       NETSTAT tcp                 +
+            *************************************
+            {netstat_udp}
+            
+            *************************************
+            +        NETSTAT route              +
+            *************************************
+            {netstat_route}
+            """.format(netstat_all=subprocess.check_output(shlex.split('netstat -anbf')), netstat_tcp=subprocess.check_output(shlex.split('netstat -anp "tcp"')), netstat_udp=subprocess.check_output(shlex.split('netstat -anp "udp"')), netstat_route=subprocess.check_output(shlex.split('netstat -r')) ))
+
+    def run_mbsa(self, dirname):
+        pass
+        #with open(os.path.join(dirname, 'system_info', 'mbsa.txt'), 'w') as f:
+            #f.write(subprocess.check_output(shlex.split('mbsacli.exe')))
+
     def __init__(self):    
         dirname = Assessment.make_dir(self, './', 'audit_{}'.format(platform.node()))
         Assessment.config_logger(self, dirname)
-        Assessment.sys_info(self, dirname)
+        self.sys_info(dirname)
+        self.run_mbsa(dirname)
         self.get_fwlogs(dirname)
         self.get_eventlogs(dirname)
+        self.get_netinfo(dirname)
         
 class Mac(Assessment):
     def __init__(self):
