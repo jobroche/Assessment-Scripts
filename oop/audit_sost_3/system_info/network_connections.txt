@@ -1,0 +1,209 @@
+
+            *************************************
+            +       NETSTAT -anbf               +
+            *************************************
+            
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING
+  RpcSs
+ [svchost.exe]
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING
+ Can not obtain ownership information
+  TCP    0.0.0.0:5357           0.0.0.0:0              LISTENING
+ Can not obtain ownership information
+  TCP    0.0.0.0:7112           0.0.0.0:0              LISTENING
+ [loggingserver.exe]
+  TCP    0.0.0.0:49152          0.0.0.0:0              LISTENING
+ [wininit.exe]
+  TCP    0.0.0.0:49153          0.0.0.0:0              LISTENING
+  eventlog
+ [svchost.exe]
+  TCP    0.0.0.0:49156          0.0.0.0:0              LISTENING
+  Schedule
+ [svchost.exe]
+  TCP    0.0.0.0:49160          0.0.0.0:0              LISTENING
+ [lsass.exe]
+  TCP    0.0.0.0:49161          0.0.0.0:0              LISTENING
+ [services.exe]
+  TCP    127.0.0.1:7112         127.0.0.1:49181        ESTABLISHED
+ [loggingserver.exe]
+  TCP    127.0.0.1:49181        127.0.0.1:7112         ESTABLISHED
+ [vprot.exe]
+  TCP    172.16.101.128:139     0.0.0.0:0              LISTENING
+ Can not obtain ownership information
+  TCP    [::]:135               [::]:0                 LISTENING
+  RpcSs
+ [svchost.exe]
+  TCP    [::]:445               [::]:0                 LISTENING
+ Can not obtain ownership information
+  TCP    [::]:5357              [::]:0                 LISTENING
+ Can not obtain ownership information
+  TCP    [::]:49152             [::]:0                 LISTENING
+ [wininit.exe]
+  TCP    [::]:49153             [::]:0                 LISTENING
+  eventlog
+ [svchost.exe]
+  TCP    [::]:49156             [::]:0                 LISTENING
+  Schedule
+ [svchost.exe]
+  TCP    [::]:49160             [::]:0                 LISTENING
+ [lsass.exe]
+  TCP    [::]:49161             [::]:0                 LISTENING
+ [services.exe]
+  UDP    0.0.0.0:3702           *:*                    
+  EventSystem
+ [svchost.exe]
+  UDP    0.0.0.0:3702           *:*                    
+  EventSystem
+ [svchost.exe]
+  UDP    0.0.0.0:3702           *:*                    
+  FDResPub
+ [svchost.exe]
+  UDP    0.0.0.0:3702           *:*                    
+  FDResPub
+ [svchost.exe]
+  UDP    0.0.0.0:5355           *:*                    
+  Dnscache
+ [svchost.exe]
+  UDP    0.0.0.0:57918          *:*                    
+  EventSystem
+ [svchost.exe]
+  UDP    0.0.0.0:59567          *:*                    
+  FDResPub
+ [svchost.exe]
+  UDP    127.0.0.1:1900         *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    127.0.0.1:59436        *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    172.16.101.128:137     *:*                    
+ Can not obtain ownership information
+  UDP    172.16.101.128:138     *:*                    
+ Can not obtain ownership information
+  UDP    172.16.101.128:1900    *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    172.16.101.128:59435   *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [::]:3702              *:*                    
+  EventSystem
+ [svchost.exe]
+  UDP    [::]:3702              *:*                    
+  EventSystem
+ [svchost.exe]
+  UDP    [::]:3702              *:*                    
+  FDResPub
+ [svchost.exe]
+  UDP    [::]:3702              *:*                    
+  FDResPub
+ [svchost.exe]
+  UDP    [::]:57919             *:*                    
+  EventSystem
+ [svchost.exe]
+  UDP    [::]:59568             *:*                    
+  FDResPub
+ [svchost.exe]
+  UDP    [::1]:1900             *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [::1]:59434            *:*                    
+  SSDPSRV
+ [svchost.exe]
+
+            
+            *************************************
+            +       NETSTAT tcp                 +
+            *************************************            
+            
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:5357           0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:7112           0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:49152          0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:49153          0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:49156          0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:49160          0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:49161          0.0.0.0:0              LISTENING
+  TCP    127.0.0.1:7112         127.0.0.1:49181        ESTABLISHED
+  TCP    127.0.0.1:49181        127.0.0.1:7112         ESTABLISHED
+  TCP    172.16.101.128:139     0.0.0.0:0              LISTENING
+
+            
+            *************************************
+            +       NETSTAT tcp                 +
+            *************************************
+            
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  UDP    0.0.0.0:3702           *:*                    
+  UDP    0.0.0.0:3702           *:*                    
+  UDP    0.0.0.0:3702           *:*                    
+  UDP    0.0.0.0:3702           *:*                    
+  UDP    0.0.0.0:5355           *:*                    
+  UDP    0.0.0.0:57918          *:*                    
+  UDP    0.0.0.0:59567          *:*                    
+  UDP    127.0.0.1:1900         *:*                    
+  UDP    127.0.0.1:59436        *:*                    
+  UDP    172.16.101.128:137     *:*                    
+  UDP    172.16.101.128:138     *:*                    
+  UDP    172.16.101.128:1900    *:*                    
+  UDP    172.16.101.128:59435   *:*                    
+
+            
+            *************************************
+            +        NETSTAT route              +
+            *************************************
+            ===========================================================================
+Interface List
+ 11...00 0c 29 58 0f ff ......Intel(R) PRO/1000 MT Network Connection
+  1...........................Software Loopback Interface 1
+ 12...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter
+ 13...00 00 00 00 00 00 00 e0 Teredo Tunneling Pseudo-Interface
+===========================================================================
+
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination        Netmask          Gateway       Interface  Metric
+          0.0.0.0          0.0.0.0     172.16.101.2   172.16.101.128     10
+        127.0.0.0        255.0.0.0         On-link         127.0.0.1    306
+        127.0.0.1  255.255.255.255         On-link         127.0.0.1    306
+  127.255.255.255  255.255.255.255         On-link         127.0.0.1    306
+     172.16.101.0    255.255.255.0         On-link    172.16.101.128    266
+   172.16.101.128  255.255.255.255         On-link    172.16.101.128    266
+   172.16.101.255  255.255.255.255         On-link    172.16.101.128    266
+        224.0.0.0        240.0.0.0         On-link         127.0.0.1    306
+        224.0.0.0        240.0.0.0         On-link    172.16.101.128    266
+  255.255.255.255  255.255.255.255         On-link         127.0.0.1    306
+  255.255.255.255  255.255.255.255         On-link    172.16.101.128    266
+===========================================================================
+Persistent Routes:
+  None
+
+IPv6 Route Table
+===========================================================================
+Active Routes:
+ If Metric Network Destination      Gateway
+ 13     58 ::/0                     On-link
+  1    306 ::1/128                  On-link
+ 13     58 2001::/32                On-link
+ 13    306 2001:0:9d38:6ab8:30ee:37c6:53ef:9a7f/128
+                                    On-link
+ 13    306 fe80::/64                On-link
+ 13    306 fe80::30ee:37c6:53ef:9a7f/128
+                                    On-link
+  1    306 ff00::/8                 On-link
+ 13    306 ff00::/8                 On-link
+===========================================================================
+Persistent Routes:
+  None
+
+            
