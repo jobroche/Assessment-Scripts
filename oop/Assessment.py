@@ -173,8 +173,12 @@ class Linux(Assessment): #TODO: check services and obtain configuration files fo
                     
     def get_services(self, dirname):
         with open(os.path.join('{}/system_info'.format(dirname), "services.txt"), 'wb') as f:
-            f.write(subprocess.check_output(shlex.split('service --status-all')))
             f.write(subprocess.check_output(shlex.split('netstat -tulpn')))
+            f.write(subprocess.check_output(shlex.split('service --status-all')))
+            
+        if 'running' in subprocess.check_output(shlex.split('service apache2 status')) or in subprocess.check_output(shlex.split('service httpd status')):
+            shutil.copyfile('/etc/httpd', os.path.join('{}/system_info'.format(dirname), 'apache_httpd'))
+            
         #e.g. if apache in running services -> copy server configuration onto dirname
     def __init__(self):
         dirname = Assessment.make_dir(self, './', 'audit_{}'.format(platform.node()))
